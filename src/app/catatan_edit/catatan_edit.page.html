@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><span class="fontKuning">Edit</span> Catatan</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar class="ion-text-center">
+      <p class="judulIOS"><span class="fontKuning">Edit</span> Catatan</p>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list lines="full">
+
+    <ion-item>
+      <ion-label>Tanggal</ion-label>
+      <ion-note slot="end" id="open-popover1">{{tanggal | date}}</ion-note>
+      <ion-popover trigger="open-popover1">
+        <ng-template>
+          <ion-datetime presentation="date" [(ngModel)]="tanggal"></ion-datetime>
+        </ng-template>
+      </ion-popover>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Catatan Teks</ion-label>
+      <ion-textarea [(ngModel)]="catatan_teks" [autoGrow]="true" placeholder="Masukkan Catatan Teks">
+      </ion-textarea>
+    </ion-item>
+      <ion-input required [(ngModel)]="id_catatan" type="hidden">
+      </ion-input>
+    <ion-row  class="ion-text-center">
+      <ion-col>
+        <ion-button type="button" (click)="editCatatan()" color="primary" shape="full" expand="block">Edit Catatan
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>

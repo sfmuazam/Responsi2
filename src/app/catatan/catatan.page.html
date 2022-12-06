@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><span class="fontKuning">Catatan</span> Ku</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar
+      class="ion-text-center">
+      <p class="judulIOS"><span class="fontKuning">Catatan</span>Ku</p>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Tarik Untuk Memuat Data"
+        refreshingSpinner="circles" refreshingText="Memuat Ulang Data...">
+      </ion-refresher-content>
+    </ion-refresher>
+    <hr>
+    <ion-card>
+      <ion-button color="success" expand="block" [routerLink]="['/catatan_tambah']">Tambah Catatan</ion-button>
+    </ion-card>
+    <hr>
+    <ion-card *ngFor="let item of lists">
+      <ion-item>
+        <ion-label>
+          {{item.tanggal}}
+          <p>{{item.catatan_teks}}</p>
+          <ion-button color="success"
+          class="option" slot="end" [routerLink]="['/catatan_edit/',item.id_catatan]"
+            routerLinkActive="router-link-active">Edit</ion-button>
+          <ion-button color="danger"
+          class="option" slot="end" (click)="deleteCatatan(item.id_catatan)">Hapus</ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+      <ion-infinite-scroll-content loadingSpinner="circles" loadingText="Sedang Memuat Data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+  </ion-content>

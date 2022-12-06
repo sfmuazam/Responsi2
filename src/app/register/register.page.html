@@ -1,0 +1,36 @@
+<ion-content class="ion-padding-top">
+  <div class="form ion-text-center">
+    <div class="icon">
+      <ion-img src="../../assets/loginPage/bocilBacaBuku.png"></ion-img>
+    </div>
+    <h1>Register</h1>
+    <ion-item lines="full">
+      <ion-label position="floating">Username</ion-label>
+      <ion-input type="text" [(ngModel)]="username" required="required" placeholder="Masukkan username"></ion-input>
+    </ion-item>
+    <ion-item lines="full" class="ion-margin-top">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password" required="required" placeholder="Masukkan password">
+      </ion-input>
+    </ion-item>
+    <ion-item lines="full" class="ion-margin-top">
+      <ion-label position="floating">Konfirmasi Password</ion-label>
+      <ion-input type="password" [(ngModel)]="konfirmasi_password" required="required"
+        placeholder="Masukkan konfirmasi password">
+      </ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col class="ion-margin-top">
+        <ion-button type="submit" color="warning" (click)="prosesRegister()">Register</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-margin-top">
+        <ion-button color="primary" [routerLink]="['/login']"
+        routerLinkActive="router-link-active">Sudah punya akun? Login!</ion-button>
+      </ion-col>
+    </ion-row>
+
+
+  </div>
+</ion-content>

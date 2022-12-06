@@ -39,6 +39,11 @@ const routes: Routes = [
     loadChildren: () => import('./pass-edit/pass-edit.module').then(m => m.PassEditPageModule),
     canLoad: [AuthGuard]
   },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule),
+    canLoad: [AutoLoginGuard]
+  },
 
 ];
 
